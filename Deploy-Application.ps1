@@ -56,15 +56,15 @@ Try {
 	##* VARIABLE DECLARATION
 	##*===============================================
 	## Variables: Application
-	[string]$appVendor = ''
-	[string]$appName = ''
-	[string]$appVersion = ''
+	[string]$appVendor = 'Microsoft'
+	[string]$appName = 'Visual C++ 2015'
+	[string]$appVersion = '14.0.24123'
 	[string]$appArch = ''
 	[string]$appLang = 'EN'
 	[string]$appRevision = '01'
 	[string]$appScriptVersion = '1.0.0'
-	[string]$appScriptDate = '06/12/2017'
-	[string]$appScriptAuthor = '<author name>'
+	[string]$appScriptDate = '06/28/2017'
+	[string]$appScriptAuthor = 'Reuther'
 	##*===============================================
 	## Variables: Install Titles (Only set here to override defaults set by the toolkit)
 	[string]$installName = ''
@@ -133,6 +133,7 @@ Try {
 
 		## <Perform Installation tasks here>
 
+				Execute-Process -Path "$dirFiles\vc_redist.x64.exe" -Parameters '/q /norestart' -WindowStyle 'Hidden'
 
 		##*===============================================
 		##* POST-INSTALLATION
@@ -173,6 +174,7 @@ Try {
 
 		# <Perform Uninstallation tasks here>
 
+				Execute-Process -Path "$dirFiles\vc_redist.x64.exe" -Parameters '/uninstall' -WindowStyle 'Hidden'
 
 		##*===============================================
 		##* POST-UNINSTALLATION
