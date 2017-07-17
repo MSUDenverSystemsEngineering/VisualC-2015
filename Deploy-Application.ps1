@@ -133,7 +133,8 @@ Try {
 
 		## <Perform Installation tasks here>
 
-				Execute-Process -Path "$dirFiles\vc_redist.x64.exe" -Parameters '/q /norestart' -WindowStyle 'Hidden'
+				$exitCode = Execute-Process -Path "$dirFiles\vc_redist.x64.exe" -Parameters '/q /norestart' -WindowStyle 'Hidden' -PassThru
+				If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 
 		##*===============================================
 		##* POST-INSTALLATION
